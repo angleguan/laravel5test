@@ -10,8 +10,18 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
+    public  function __construct()
+    {
+        //中间件的使用
+        $this->middleware('auth',[
+            'only'=>'show',
+        ]);
+    }
+
     public function index(){
     	return view('index');
     }
@@ -57,7 +67,11 @@ class UserController extends Controller
 
 	//查看用户信息
 	public function show($id){
-		return view('user.center',['user'=>User::findOrFail($id)]);
+        $user = User::findOrFail($id);
+        // 第一个是要调用的授权方法
+        // 第二个是调用哪个授权模型
+        $this->authorize('check' , $user);
+		return view('user.center',['user'=>$user]);
 	}
 
 
