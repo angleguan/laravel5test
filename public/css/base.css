@@ -1,0 +1,14 @@
+.form-header{
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	line-height: 50px;
+	height: 50px;
+	padding-left: 20px;
+	margin-top: 20px;
+}
+
+.form-body{
+	border: 1px solid #ddd;
+	padding: 20px;
+}
