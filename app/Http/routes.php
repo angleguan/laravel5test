@@ -11,17 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index');
 
-//Route::get('index', 'UserController@index');
-//
-//Route::get('login', 'UserController@login');
-//
-//Route::get('create', 'UserController@create');
+Route::get('/category_id/{category_id}','HomeController@index');//根据live分类查找
 
-Route::resource('user','UserController');
+Route::resource('user','UserController');//资源路由
+
+Route::resource('live','LiveController');
 
 Route::get('login','LoginController@create')->name("login");
 

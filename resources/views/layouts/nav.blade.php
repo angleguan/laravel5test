@@ -13,10 +13,10 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">分类1 <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">分类2</a></li>
-       
+        <ul class="nav navbar-nav">
+            @foreach(\App\Service\Func::getLiveCategoryList() as $category )
+                 <li><a href="{{ url('/category_id',$category->id) }}">{{$category->name}}</a></li>
+            @endforeach
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -28,6 +28,7 @@
       </form>
 
         @if(Auth::check())
+              <li><a href="{{route('live.create')}}">发布Live</a></li>
               <li><a href="{{route('user.show',Auth::user()->id)}}">{{Auth::user()->name}}</a></li>
               <li>
                   <form class="navbar-form navbar-left" method="post" action="{{route('logout')}}">
@@ -37,8 +38,8 @@
                   </form>
               </li>
         @else
-              <li><a href="#">登录</a></li>
-              <li><a href="#">注册</a></li>
+              <li><a href="{{route('login')}}">登录</a></li>
+              <li><a href="{{route('user.create')}}">注册</a></li>
         @endif
       </ul>
     </div><!-- /.navbar-collapse -->
