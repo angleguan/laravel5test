@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="90d3c072-bf69-42f5-8c38-223715735244" name="laravel" url="http://127.0.0.1/laravel5test">
-        <fileTransfer accessType="LOCAL" />
+      <webServer id="47da554b-e2ec-49b6-a239-1019d9482d8b" name="new" url="http://localhost:80">
+        <fileTransfer mountedRoot="D:\phpStudy\WWW" accessType="MOUNT" />
       </webServer>
     </option>
   </component>

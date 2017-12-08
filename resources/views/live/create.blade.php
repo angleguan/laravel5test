@@ -32,7 +32,12 @@
                         </div>
                         <div class="form-group">
                             <label for="">Live内容:</label>
-                            <textarea name="content" cols="30" rows="10" class="form-control">{{old('content')}}</textarea>
+                            {!! we_css() !!}
+                            <textarea class="form-control we-container" name="content" id="wangeditor" style="display:none;" cols="5" rows="10">
+                                {{ old('content')  }}
+                             </textarea>
+                            {!! we_js() !!}
+                            {!! we_config('wangeditor') !!}
                         </div>
                         <div class="form-group">
                             <label for="">Live开始时间:</label>
