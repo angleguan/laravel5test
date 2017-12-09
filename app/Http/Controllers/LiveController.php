@@ -20,6 +20,14 @@ use App\Live;
 
 class LiveController extends Controller
 {
+    //用户登录权限的判断
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -90,7 +98,8 @@ class LiveController extends Controller
      */
     public function show($id)
     {
-        //
+        //查询live详情并变量置换到模板
+        return view('live.show',['live'=>Live::findOrFail($id)]);
     }
 
     /**
