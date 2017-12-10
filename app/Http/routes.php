@@ -24,3 +24,9 @@ Route::get('login','LoginController@create')->name("login");
 Route::post('login','LoginController@store')->name("login");
 
 Route::delete('logout','LoginController@destroy')->name("logout");
+
+Route::get('test/create','TestController@create')->name('create');
+
+Route::post('follow/follow/{id}','FollowController@store')->name('follow.follow');
+
+Route::delete('follow/unfollow/{id}','FollowController@destroy')->name('follow.unfollow');

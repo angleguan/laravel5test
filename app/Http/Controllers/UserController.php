@@ -70,13 +70,24 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         // 第一个是要调用的授权方法
         // 第二个是调用哪个授权模型
-        $this->authorize('check' , $user);
+      //  $this->authorize('check' , $user);
 
         $lives=DB::table('live')
             ->where(['status'=>1,'user_id'=>$id])
-            ->get();
+            ->paginate(4);
 
-		return view('user.center',['user'=>$user,"lives"=>$lives]);
+        //用户的粉丝列表
+        $follow_user_list = $user->follow_user()->paginate(4);
+
+        //用户的关注列表
+        $user_follow_list = $user->user_follow()->paginate(4);
+
+		return view('user.center',[
+            'user'=>$user,
+            "lives"=>$lives,
+            'user_follow_list'=>$user->follow_list,
+            'follow_user_list'=>$follow_user_list,
+        ]);
 	}
 
 
