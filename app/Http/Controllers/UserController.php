@@ -71,7 +71,12 @@ class UserController extends Controller
         // 第一个是要调用的授权方法
         // 第二个是调用哪个授权模型
         $this->authorize('check' , $user);
-		return view('user.center',['user'=>$user]);
+
+        $lives=DB::table('live')
+            ->where(['status'=>1,'user_id'=>$id])
+            ->get();
+
+		return view('user.center',['user'=>$user,"lives"=>$lives]);
 	}
 
 
