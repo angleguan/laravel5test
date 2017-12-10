@@ -5,12 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
 use App\Http\Controllers\Controller;
-
-use APP\Live;
-
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -19,30 +14,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //live的分类id
-        $category_id = $request->category_id;
-
-        //未接到分类的分页
-        $map = ['status' => 1];
-        $category_name = "全部Live";
-
-        if($category_id){
-            //接到分类的分页
-            $map = ['live_category_id'=>$category_id];
-            $category_name = DB::table('live_category')
-                ->where(['id' => $category_id])
-                ->value('name');
-        }
-
-            $lives = DB::table('live')
-                ->where($map)
-                ->orderBy('created_at', 'desc')
-                ->paginate(3);
-
-        return view('home.index', ['lives' => $lives,'name'=>$category_name]);
-
+        //
+        return view('home.index');
     }
 
     /**
