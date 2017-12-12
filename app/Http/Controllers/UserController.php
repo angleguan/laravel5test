@@ -74,13 +74,13 @@ class UserController extends Controller
 
         $lives=DB::table('live')
             ->where(['status'=>1,'user_id'=>$id])
-            ->paginate(4);
+            ->paginate(3);
 
         //用户的粉丝列表
-        $follow_user_list = $user->follow_user()->paginate(4);
+        $follow_user_list = $user->follow_user()->paginate(5);
 
         //用户的关注列表
-        $user_follow_list = $user->user_follow()->paginate(4);
+        $user_follow_list = $user->user_follow()->paginate(5);
 
 		return view('user.center',[
             'user'=>$user,

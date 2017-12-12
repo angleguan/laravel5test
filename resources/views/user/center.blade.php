@@ -60,7 +60,7 @@
                                 </p>
                             </div>
                         @endforeach
-                        {!! $lives->render() !!}}
+                        {!! $lives->render() !!}
                     @else
                         <div>
                             <p>暂无Live发布</p>
