@@ -16,15 +16,17 @@
                     </p>
                 </div>
                 <div>
-                    @if(Auth::user())
-                        @if(strtotime($live->start_time)>time())
-                            @include('layouts.errors')
+                	@include('layouts.errors')
                             @if(session()->has('success'))
                                 <div class="alert alert-success">
                                     {{session()->get('success')}}
                                 </div>
                             @endif
-                            <form action="{{route('order.store')}}" method="post">
+                    @if(Auth::user())
+                        @if(strtotime($live->start_time) < time())   
+                        	<a href="{{route('msg.show',$live->id)}}" class="btn btn-info">进入Live</a>                                                              
+                        @else
+                           <form action="{{route('order.store')}}" method="post">
                                 {{csrf_field()}}
                                 <input  type="hidden" value="{{$live->id}}" name="live_id"/>
                                 <input  type="hidden" value="{{Auth::user()->id}}" name="user_id"/>

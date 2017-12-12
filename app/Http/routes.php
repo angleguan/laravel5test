@@ -32,3 +32,7 @@ Route::post('follow/follow/{id}','FollowController@store')->name('follow.follow'
 Route::delete('follow/unfollow/{id}','FollowController@destroy')->name('follow.unfollow');
 
 Route::resource('order','OrderController');//订单的资源路由
+
+Route::resource('msg','MsgController');
+
+Route::get('getMsgList/{id}','MsgController@getMsgList')->name('getMsgList');//ajax异步获取消息列表
